@@ -1,8 +1,14 @@
+import { SobrePage } from './../pages/sobre/sobre';
+import { RestaurantePage } from './../pages/restaurante/restaurante';
+import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protocolo-eletronico';
+import { PerfilPage } from './../pages/perfil/perfil';
+import { InfoUtilPage } from './../pages/info-util/info-util';
+import { GradeHorariaPage } from './../pages/grade-horaria/grade-horaria';
+import { ContatosPage } from './../pages/contatos/contatos';
+import { CircularInternoPage } from './../pages/circular-interno/circular-interno';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -10,8 +16,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2
+    CircularInternoPage,
+    ContatosPage,
+    GradeHorariaPage,
+    InfoUtilPage,
+    PerfilPage,
+    ProtocoloEletronicoPage,
+    RestaurantePage,
+    SobrePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -19,8 +31,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2
+    CircularInternoPage,
+    ContatosPage,
+    GradeHorariaPage,
+    InfoUtilPage,
+    PerfilPage,
+    ProtocoloEletronicoPage,
+    RestaurantePage,
+    SobrePage
   ],
   providers: [
     StatusBar,

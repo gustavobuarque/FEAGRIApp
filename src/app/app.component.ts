@@ -3,9 +3,14 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
-
+import { SobrePage } from './../pages/sobre/sobre';
+import { PerfilPage } from './../pages/perfil/perfil';
+import { RestaurantePage } from './../pages/restaurante/restaurante';
+import { CircularInternoPage } from './../pages/circular-interno/circular-interno';
+import { InfoUtilPage } from './../pages/info-util/info-util';
+import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protocolo-eletronico';
+import { ContatosPage } from './../pages/contatos/contatos';
+import { GradeHorariaPage } from './../pages/grade-horaria/grade-horaria';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,17 +18,24 @@ import { Page2 } from '../pages/page2/page2';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = GradeHorariaPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: string, title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
+      { icon: "clock", title: 'Grade Horária', component: GradeHorariaPage },
+      { icon: "mail", title: 'Webmail', component: GradeHorariaPage },
+      { icon: "contacts", title: 'Contatos', component: ContatosPage },
+      { icon: "create",  title: 'Protocolo Eletrônico', component: ProtocoloEletronicoPage },
+      { icon: "link", title: 'Informações Úteis', component: InfoUtilPage },
+      { icon: "bus", title: 'Circular Interno', component: CircularInternoPage },
+      { icon: "restaurant", title: 'Restaurante/Cardápio', component: RestaurantePage },
+      { icon: "person", title: 'Perfil', component: PerfilPage },
+      { icon: "information", title: 'Sobre', component: SobrePage }
     ];
 
   }
