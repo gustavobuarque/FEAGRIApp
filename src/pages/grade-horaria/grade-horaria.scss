@@ -2,10 +2,14 @@ page-grade-horaria {
     div.h,
     div.s
     {
-        font-size: 12px;
+        font-size: 11px;
         color: rgb(120, 120, 120);
     }
 
+    .disciplina,
+    .docenteName {
+        font-size: 12px;
+    }
     .docente{
         align-content: center;
         align-items: center;

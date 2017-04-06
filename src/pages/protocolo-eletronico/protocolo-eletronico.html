@@ -10,12 +10,73 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>ProtocoloEletronico</ion-title>
+    <ion-title>Protocolo Eletrônico</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Solicitante</ion-label>
+      <ion-select [(ngModel)]="protSolicitante">
+        <ion-option value="0">Alunos</ion-option>
+        <ion-option value="1">Funcionários</ion-option>
+        <ion-option value="2">Outros</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>CPF</ion-label>
+      <ion-input type="text" [(ngModel)]="protOutros"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Aluno (RA)</ion-label>
+      <ion-input type="text" [(ngModel)]="protAlunoRA"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Funcionário/Docente (Matrícula)</ion-label>
+      <ion-input type="text" [(ngModel)]="protFuncionario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Protocolo Número</ion-label>
+      <ion-input type="text" [(ngModel)]="protNumero"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="buscarProtocolo()">
+    <ion-icon name="search"></ion-icon> Buscar
+  </button>
+
+  <p text-center><strong>Resultado</strong></p>
+
+  <ion-card *ngFor="let protocolo of protocoloResult">
+    <ion-card-header>{{protocolo.data}}</ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col><strong>Data Envio/Retorno: </strong>{{protocolo.data}}</ion-col>
+        <ion-col><strong>Status: </strong>{{protocolo.status}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><strong>Descrição: </strong>{{protocolo.descricao}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><strong>Anexo: </strong>{{protocolo.anexo}}</ion-col>
+        <ion-col><strong>Data Solicitação: </strong>{{protocolo.datasolicita}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><strong>Serviço Solicitado: </strong>{{protocolo.servico}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><strong>Solicitante: </strong>{{protocolo.nome}}</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
