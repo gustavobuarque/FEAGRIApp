@@ -1,3 +1,4 @@
+import { ContatoInfoPage } from './../pages/contato-info/contato-info';
 import { SobrePage } from './../pages/sobre/sobre';
 import { RestaurantePage } from './../pages/restaurante/restaurante';
 import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protocolo-eletronico';
@@ -23,7 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PerfilPage,
     ProtocoloEletronicoPage,
     RestaurantePage,
-    SobrePage
+    SobrePage,
+    ContatoInfoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PerfilPage,
     ProtocoloEletronicoPage,
     RestaurantePage,
-    SobrePage
+    SobrePage,
+    ContatoInfoPage
   ],
   providers: [
     StatusBar,

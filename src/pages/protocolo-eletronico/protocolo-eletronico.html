@@ -56,25 +56,29 @@
 
   <p text-center><strong>Resultado</strong></p>
 
-  <ion-card *ngFor="let protocolo of protocoloResult">
-    <ion-card-header>{{protocolo.data}}</ion-card-header>
+  <ion-list *ngFor="let protocolo of protResult">
+    <ion-item>
+      <p><span floating>Data Solicitação:</span> {{protocolo.datasolicita}}</p>
+      <p>Serviço Solicitado: {{protocolo.servico}}</p>
+      <p>Solicitante: {{protocolo.nome}}</p>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-card *ngFor="let ret of protRetorno">
     <ion-card-content>
       <ion-row>
-        <ion-col><strong>Data Envio/Retorno: </strong>{{protocolo.data}}</ion-col>
-        <ion-col><strong>Status: </strong>{{protocolo.status}}</ion-col>
+        <ion-col><strong>Data Envio/Retorno: </strong>{{ret.data}}</ion-col>
+        <ion-col><strong>Status: </strong>{{ret.status}}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><strong>Descrição: </strong>{{protocolo.descricao}}</ion-col>
+        <ion-col><strong>Descrição: </strong>{{ret.descricao}}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><strong>Anexo: </strong>{{protocolo.anexo}}</ion-col>
-        <ion-col><strong>Data Solicitação: </strong>{{protocolo.datasolicita}}</ion-col>
+        <ion-col><strong>Anexo: </strong>{{ret.anexo}}</ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col><strong>Serviço Solicitado: </strong>{{protocolo.servico}}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col><strong>Solicitante: </strong>{{protocolo.nome}}</ion-col>
+       <ion-row>
+        <ion-col><strong>Local: </strong>{{ret.local}}</ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>

@@ -15,7 +15,8 @@ export class ProtocoloEletronicoPage {
   protAlunoRA: number;
   protFuncionario: number;
   protNumero: number;
-  protocoloResult: any[];
+  protResult: any;
+  protRetorno: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) { }
 
@@ -25,7 +26,8 @@ export class ProtocoloEletronicoPage {
     
     switch (this.protSolicitante) {
       case '0':
-				url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/consulta-protocolo?protoc_pessoa="+this.protSolicitante+"&protoc_aluno="+this.protAlunoRA+"&protoc_num="+this.protNumero;
+				//url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/consulta-protocolo?protoc_pessoa="+this.protSolicitante+"&protoc_aluno="+this.protAlunoRA+"&protoc_num="+this.protNumero;
+				url = "data/protocolos.json";
 				break;
 			case '1':
 				url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/consulta-protocolo?protoc_pessoa="+this.protSolicitante+"&protoc_funcionario="+this.protFuncionario+"&protoc_num="+this.protNumero;
@@ -38,8 +40,8 @@ export class ProtocoloEletronicoPage {
     this.http.get(url)
       .map(res => res.json())
       .subscribe(data => {
-            this.protocoloResult = data;
-            console.log(data);
+            this.protResult = data;
+            this.protRetorno = data[0].retornos;
       },
       err => {
         console.log(err);

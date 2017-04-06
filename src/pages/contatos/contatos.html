@@ -17,6 +17,7 @@
 
 
 <ion-content padding>
+  
   <ion-list>
     <ion-item-sliding *ngFor="let contato of contatos">
       <ion-item>
@@ -37,7 +38,7 @@
         </button>
       </ion-item-options>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="openInfo()">
           <ion-icon name="more"></ion-icon>
           Info
         </button>
