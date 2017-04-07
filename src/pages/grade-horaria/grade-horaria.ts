@@ -53,7 +53,6 @@ export class GradeHorariaPage {
               semana = "6sábado";
               diasemana = "Sábado"
       } // End Switch
-      console.log("Semana " + semana + " Ano " + ano);
 
       let url = 'data/gradehoraria.json';
       //let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano="+ano+"&salaaula_anosemestre=1&salaaula_semana="+semana;

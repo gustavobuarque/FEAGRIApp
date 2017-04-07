@@ -12,10 +12,13 @@
 
 <ion-content padding>
  
-  <ion-item-group *ngFor="let cat of categorias">
+  <ion-item-group *ngFor="let cat of categorias;">
  
-      <ion-item-divider light>{{cat.catname}}</ion-item-divider>
-      
+    <ion-item-divider light>{{cat.catname}}</ion-item-divider>
+    <ion-item *ngFor="let l of cat.data">
+      <a href="{{l.url}}" target="_blnak">{{l.title}}</a>
+    </ion-item>
  
-    </ion-item-group>
+  </ion-item-group>
+  
 </ion-content>

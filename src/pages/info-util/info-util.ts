@@ -9,11 +9,14 @@ import 'rxjs/add/operator/map';
 })
 export class InfoUtilPage {
 
-  categorias: any[];
-
+  //categorias: any[];
+  categorias: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
     
-    this.http.get('http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/weblinks.php')
+    let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/weblinks.php';
+
+    this.http.get(url)
       .map(res => res.json())
       .subscribe(data => {
         this.categorias = data;
@@ -22,6 +25,6 @@ export class InfoUtilPage {
         console.log(err);
       });
 
-  }
+  } // End Constructor
 
 }
