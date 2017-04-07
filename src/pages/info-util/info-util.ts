@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 })
 export class InfoUtilPage {
 
-  //categorias: any[];
   categorias: any;
+  shownGroup = null;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
     
@@ -26,5 +26,22 @@ export class InfoUtilPage {
       });
 
   } // End Constructor
+
+  /*
+    Aqui começa a parte do accordion
+    Esse código peguei do site
+    https://www.djamware.com/post/5892739480aca7411808fa9c/how-to-create-ionic-2-accordion-list
+  */ 
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+        this.shownGroup = null;
+    } else {
+        this.shownGroup = group;
+    }
+  }
+  
+  isGroupShown(group) {
+      return this.shownGroup === group;
+  }
 
 }

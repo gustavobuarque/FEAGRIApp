@@ -12,12 +12,17 @@
 
 <ion-content padding>
  
-  <ion-item-group *ngFor="let cat of categorias;">
+  <ion-item-group *ngFor="let cat of categorias; let i = index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
  
-    <ion-item-divider light>{{cat.catname}}</ion-item-divider>
-    <ion-item *ngFor="let l of cat.data">
-      <a href="{{l.url}}" target="_blnak">{{l.title}}</a>
-    </ion-item>
+    <ion-item-divider light>
+      {{cat.catname}}
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+    </ion-item-divider>
+    <div *ngIf="isGroupShown(i)">
+      <ion-item *ngFor="let l of cat.data">
+        <a href="{{l.url}}" target="_blank">{{l.title}}</a>
+      </ion-item>
+    </div>
  
   </ion-item-group>
   
