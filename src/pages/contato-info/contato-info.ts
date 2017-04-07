@@ -20,8 +20,4 @@ export class ContatoInfoPage {
     this.info = navParams.get('info');
   }
 
-  fechar() : void {
-    this.viewCtrl.dismiss();
-  }
-
 }

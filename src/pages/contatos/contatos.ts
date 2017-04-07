@@ -1,6 +1,6 @@
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController} from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 import { ContatoInfoPage } from './../contato-info/contato-info';
 import 'rxjs/add/operator/map';
 
@@ -13,7 +13,7 @@ export class ContatosPage {
   contatos: any[];
   info: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
 
     let urlL = 'data/contatos.json';
     let urlR = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/contatos.json';
@@ -30,8 +30,7 @@ export class ContatosPage {
   }
 
   openInfo(i) : void {
-    let modal = this.modalCtrl.create(ContatoInfoPage, {info: this.contatos[i]});
-    modal.present();
+    this.navCtrl.push(ContatoInfoPage, {info: this.contatos[i]})
   }
 
 }
