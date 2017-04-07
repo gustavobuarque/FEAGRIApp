@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 /*
   Generated class for the ContatoInfo page.
@@ -13,10 +13,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ContatoInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  info: any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContatoInfoPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    console.log("Dados recebidos: ", navParams.get('info'));
+    this.info = navParams.get('info');
+  }
+
+  fechar() : void {
+    this.viewCtrl.dismiss();
   }
 
 }
