@@ -12,11 +12,14 @@
     </button>
     <ion-title>Contatos</ion-title>
   </ion-navbar>
-
+  
 </ion-header>
 
-
 <ion-content padding>
+  
+  <ion-toolbar>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
   
   <ion-list>
     <ion-item-sliding *ngFor="let contato of contatos; let i = index;">
@@ -28,14 +31,14 @@
         <p>{{contato.gruponame}} | {{contato.funcao}}</p>
       </ion-item>
       <ion-item-options side="left">
-        <button ion-button color="primary">
+        <a href="mailto:{{contato.email}}" ion-button color="primary">
           <ion-icon name="mail"></ion-icon>
           Email
-        </button>
-        <button ion-button color="secondary">
+        </a>
+        <a href="tel:{{contato.telefone}}" ion-button color="secondary">
           <ion-icon name="call"></ion-icon>
           Ligar
-        </button>
+        </a>
       </ion-item-options>
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="openInfo(i)">

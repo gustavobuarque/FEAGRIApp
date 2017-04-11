@@ -12,7 +12,7 @@ import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protoco
 import { ContatosPage } from './../pages/contatos/contatos';
 import { GradeHorariaPage } from './../pages/grade-horaria/grade-horaria';
 
-//import { InAppBrowser } from 'ionic-native';
+//import { InAppBrowser } from '@ionic-native/in-app-browser'; //não está funcionando
 
 @Component({
   templateUrl: 'app.html'
@@ -58,6 +58,8 @@ export class MyApp {
       this.nav.setRoot(page.component);
     } else {
       window.open(page.component, '_blank')
+      // A função abaixo não está funcionando pois não consigo importar o módulo InAppBrowser
+      // Verificar motivo
       /*
       this.platform.ready().then(() => {
         let browser = new InAppBrowser(page.component,'_blank');

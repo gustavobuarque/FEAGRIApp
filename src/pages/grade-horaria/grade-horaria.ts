@@ -16,6 +16,7 @@ import 'rxjs/add/operator/map';
 export class GradeHorariaPage {
 
   horarios: any[];
+  diasemana: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
 
@@ -26,7 +27,7 @@ export class GradeHorariaPage {
       switch (new Date().getDay()) {
           case 0:
               semana = "0domingo";
-              diasemana = "Domingo"
+              this.diasemana = "Domingo"
               break;
           case 1:
               semana = "1segunda";
@@ -54,8 +55,10 @@ export class GradeHorariaPage {
               diasemana = "Sábado"
       } // End Switch
 
-      let url = 'data/gradehoraria.json';
-      //let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano="+ano+"&salaaula_anosemestre=1&salaaula_semana="+semana;
+      this.diasemana = diasemana;
+      
+      //let url = 'data/gradehoraria.json';
+      let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano="+ano+"&salaaula_anosemestre=1&salaaula_semana="+semana;
 
       this.http.get(url) // Acessa a Url
         .map(res => res.json()) // Converte o conteúdo da Url para JSON

@@ -5,15 +5,17 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>GradeHoraria</ion-title>
+    <ion-title>Grade Horária</ion-title>
   </ion-navbar>
-
+  <ion-segment>
+    <h6 margin>{{diasemana}}</h6>
+  </ion-segment>
 </ion-header>
 
 
 <ion-content>
   
-  <h3 margin>{{diasemana}}</h3>
+  
 
   <ion-card *ngFor="let h of horarios">
 

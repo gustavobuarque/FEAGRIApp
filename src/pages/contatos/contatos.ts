@@ -15,10 +15,10 @@ export class ContatosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
 
-    let urlL = 'data/contatos.json';
-    let urlR = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/contatos.json';
+    //let urlL = 'data/contatos.json';
+    let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/contatos.json';
 
-    this.http.get(urlL) // Acessa a Url
+    this.http.get(url) // Acessa a Url
       .map(res => res.json()) // Converte o conteúdo da Url para JSON
       .subscribe(data => { // Passa o objeto JSON para dentro de um array na Classe ContatosPage
             this.contatos = data;
