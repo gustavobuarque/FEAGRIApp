@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -12,7 +13,13 @@ export class InfoUtilPage {
   categorias: any;
   shownGroup = null;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private http: Http, 
+    public platform: Platform,
+    private iab: InAppBrowser
+  ) {
     
     let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/weblinks.php';
 
@@ -42,6 +49,13 @@ export class InfoUtilPage {
   
   isGroupShown(group) {
       return this.shownGroup === group;
+  }
+
+  openBrowser(link: string) {
+      this.platform.ready().then(() => {
+        let browser =  this.iab.create(link, '_blank');
+        browser.show();
+      });
   }
 
 }

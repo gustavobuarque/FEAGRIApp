@@ -17,7 +17,7 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-list no-lines>
     <ion-item>
       <ion-label>Solicitante</ion-label>
       <ion-select [(ngModel)]="protSolicitante">
@@ -54,9 +54,8 @@
     <ion-icon name="search"></ion-icon> Buscar
   </button>
 
-  <p text-center><strong>Resultado</strong></p>
-
   <ion-list *ngFor="let protocolo of protResult">
+    <p text-center><strong>Resultado</strong></p>
     <ion-item>
       <p><span floating>Data Solicitação:</span> {{protocolo.datasolicita}}</p>
       <p>Serviço Solicitado: {{protocolo.servico}}</p>

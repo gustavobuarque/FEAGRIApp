@@ -10,18 +10,21 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
  
-  <ion-item-group *ngFor="let cat of categorias; let i = index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+  <ion-item-group *ngFor="let cat of categorias; let i = index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}" no-lines>
  
     <ion-item-divider light>
       {{cat.catname}}
       <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
     </ion-item-divider>
     <div *ngIf="isGroupShown(i)">
-      <ion-item *ngFor="let l of cat.data">
-        <a href="{{l.url}}" target="_blank">{{l.title}}</a>
-      </ion-item>
+      <ion-list no-border>
+         <button no-margin ion-item *ngFor="let l of cat.data" (click)="openBrowser(l.url)">
+            <ion-icon name="link" item-left text-left small></ion-icon>
+            {{ l.title }}
+         </button>
+      </ion-list>  
     </div>
  
   </ion-item-group>
