@@ -17,7 +17,6 @@
 
 
 <ion-content padding>
-
   <ion-list>
     <ion-item>
       <ion-label>Solicitante</ion-label>
@@ -28,26 +27,22 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Disciplinas</ion-label>
-      <ion-select [(ngModel)]="protDisciplinas"></ion-select>
-    </ion-item>
+    <div [ngSwitch]="protSolicitante">
+      <ion-item *ngSwitchCase="'2'">
+        <ion-label floating>CPF</ion-label>
+        <ion-input type="text" [(ngModel)]="protOutros"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>CPF</ion-label>
-      <ion-input type="text" [(ngModel)]="protOutros"></ion-input>
-    </ion-item>
+       <ion-item *ngSwitchCase="'0'">
+        <ion-label floating>Aluno (RA)</ion-label>
+        <ion-input type="text" [(ngModel)]="protAlunoRA"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Aluno (RA)</ion-label>
-      <ion-input type="text" [(ngModel)]="protAlunoRA"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Funcionário/Docente (Matrícula)</ion-label>
-      <ion-input type="text" [(ngModel)]="protFuncionario"></ion-input>
-    </ion-item>
-
+       <ion-item *ngSwitchCase="'1'">
+        <ion-label floating>Funcionário/Docente (Matrícula)</ion-label>
+        <ion-input type="text" [(ngModel)]="protFuncionario"></ion-input>
+      </ion-item>
+    </div>
     <ion-item>
       <ion-label floating>Protocolo Número</ion-label>
       <ion-input type="text" [(ngModel)]="protNumero"></ion-input>
