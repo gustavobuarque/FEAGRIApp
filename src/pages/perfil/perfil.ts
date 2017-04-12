@@ -36,9 +36,9 @@ export class PerfilPage {
      this.perfilForm = formBuilder.group({
         nRAouMat: [ '', Validators.compose([Validators.maxLength(6), Validators.required]) ],
         usuario: [ '', Validators.required ],
-        formacao: [ '', Validators.required ],
-        disc: [ '', Validators.required ],
-        anoIngresso: [ '', Validators.required ]
+        formacao: [ '' ],
+        disc: [ '' ],
+        anoIngresso: [ '' ]
      });
 
   }
