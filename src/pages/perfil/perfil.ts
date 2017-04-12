@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-perfil',
@@ -8,15 +9,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPage {
 
+  perfilForm: FormGroup;
+
   disciplinas: any;
-  nRAouMat: string;
+  nRAouMat: number;
   usuario: string;
   formacao: string;
   disc: any;
   anoIngresso: number;
 
+  submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public alertCtrl: AlertController, public formBuilder: FormBuilder) {
     
     let url = 'data/disciplinas.json';
     //let url = 'http://www.feagri.unicamp.br/portal/sistemas-intranet/disciplinas';
@@ -24,19 +28,40 @@ export class PerfilPage {
       .map(res => res.json())
       .subscribe(data => {
         this.disciplinas = data;
-        console.log(data);
       },
       err => {
         console.log(err);
       });
+
+     this.perfilForm = formBuilder.group({
+        nRAouMat: [ '', Validators.compose([Validators.maxLength(6), Validators.required]) ],
+        usuario: [ '', Validators.required ],
+        formacao: [ '', Validators.required ],
+        disc: [ '', Validators.required ],
+        anoIngresso: [ '', Validators.required ]
+     });
+
   }
 
   enviarPerfil() : void{
-    console.log(this.nRAouMat);
-    console.log(this.usuario);
-    console.log(this.formacao);
-    console.log(this.disc);
-    console.log(this.anoIngresso);
+    this.submitAttempt = true;
+    
+    if(!this.perfilForm.valid){
+      this.showAlert();
+    } else {
+      console.log("Sucesso no envio");
+      console.log(this.perfilForm.value);
+    }
+    
+  }
+  
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Aviso',
+      subTitle: 'Todos os campos são obrigatórios!',
+      buttons: ['OK']
+    });
+    alert.present();
   }
   
 

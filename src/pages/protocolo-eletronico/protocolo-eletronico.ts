@@ -26,8 +26,7 @@ export class ProtocoloEletronicoPage {
     
     switch (this.protSolicitante) {
       case '0':
-				//url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/consulta-protocolo?protoc_pessoa="+this.protSolicitante+"&protoc_aluno="+this.protAlunoRA+"&protoc_num="+this.protNumero;
-				url = "data/protocolos.json";
+				url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/consulta-protocolo?protoc_pessoa="+this.protSolicitante+"&protoc_aluno="+this.protAlunoRA+"&protoc_num="+this.protNumero;
 				break;
 			case '1':
 				url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/consulta-protocolo?protoc_pessoa="+this.protSolicitante+"&protoc_funcionario="+this.protFuncionario+"&protoc_num="+this.protNumero;

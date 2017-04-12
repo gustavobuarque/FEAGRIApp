@@ -9,57 +9,61 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
   <p><strong>Tipo de Conexão: </strong> Conexão Wifi</p>
   <h1>Atualize seus dados</h1>
   <p>Esses dados serão necessários para lhes enviar Notificações pelas Secretarias da Faculdade</p>
-  <ion-list no-lines>
-    
-    <ion-item>
-      <ion-label floating>Número: RA ou Matrícula</ion-label>
-      <ion-input type="text"  [(ngModel)]="nRAouMat"></ion-input>
-    </ion-item>
 
-    <div [ngSwitch]="usuario">
+  <form [formGroup]="perfilForm">
+    
+    <ion-list no-lines>
       
-    <ion-item>
-      <ion-label>Tipo de Usuário</ion-label>
-      <ion-select [(ngModel)]="usuario">
-        <ion-option value="aluno">Aluno</ion-option>
-        <ion-option value="funcionario">Funcionário</ion-option>
-        <ion-option value="docente">Docente</ion-option>
-        <ion-option value="pesquisador">Pesquisador</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Número: RA ou Matrícula</ion-label>
+        <ion-input type="number" formControlName="nRAouMat" [class.invalid]="!perfilForm.controls.nRAouMat.valid && (perfilForm.controls.nRAouMat.dirty || submitAttempt)"></ion-input>
+      </ion-item>
 
-    <ion-item *ngSwitchCase="'aluno'">
-      <ion-label>Se aluno escolha</ion-label>
-      <ion-select [(ngModel)]="formacao">
-        <ion-option value="graduacao">Graduação</ion-option>
-        <ion-option value="mestrado">Pós-Graduação - Mestrado</ion-option>
-        <ion-option value="doutorado">Pós-Graduação - Doutorado</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>Tipo de Usuário</ion-label>
+        <ion-select  formControlName="usuario" [(ngModel)]="usuario" [class.invalid]="!perfilForm.controls.usuario.valid && (perfilForm.controls.usuario.dirty || submitAttempt)">
+          <ion-option value="aluno">Aluno</ion-option>
+          <ion-option value="funcionario">Funcionário</ion-option>
+          <ion-option value="docente">Docente</ion-option>
+          <ion-option value="pesquisador">Pesquisador</ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item *ngSwitchCase="'aluno'">
-      <ion-label>Disciplinas</ion-label>
-      <ion-select [(ngModel)]="disc" multiple="true">
-        <ion-option  *ngFor="let d of disciplinas">{{d.Sigla}} - Ano {{d.Ano}} - Turma {{d.Turma}}</ion-option>
-      </ion-select>
-    </ion-item>
+      <div [ngSwitch]="usuario">
 
-    <ion-item *ngSwitchCase="'aluno'">
-      <ion-label>Ano de Ingresso</ion-label>
-      <ion-datetime displayFormat="YYYY" [(ngModel)]="anoIngresso"></ion-datetime> 
-    </ion-item>
-    
-    </div>
+      <ion-item *ngSwitchCase="'aluno'">
+        <ion-label>Se aluno escolha</ion-label>
+        <ion-select  formControlName="formacao" [class.invalid]="!perfilForm.controls.formacao.valid && (perfilForm.controls.formacao.dirty || submitAttempt)">
+          <ion-option value="graduacao">Graduação</ion-option>
+          <ion-option value="mestrado">Pós-Graduação - Mestrado</ion-option>
+          <ion-option value="doutorado">Pós-Graduação - Doutorado</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngSwitchCase="'aluno'">
+        <ion-label>Disciplinas</ion-label>
+        <ion-select formControlName="disc" multiple="true" [class.invalid]="!perfilForm.controls.disc.valid && (perfilForm.controls.disc.dirty || submitAttempt)">
+          <ion-option  *ngFor="let d of disciplinas">{{d.Sigla}} - Ano {{d.Ano}} - Turma {{d.Turma}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngSwitchCase="'aluno'">
+        <ion-label>Ano de Ingresso</ion-label>
+        <ion-datetime displayFormat="YYYY" formControlName="anoIngresso"  [class.invalid]="!perfilForm.controls.anoIngresso.valid && (perfilForm.controls.anoIngresso.dirty || submitAttempt)"></ion-datetime> 
+      </ion-item>
+      
+      </div>
 
 
-  </ion-list>
+    </ion-list>
 
-  <button ion-button block (click)="enviarPerfil()">Enviar</button>
+    <button ion-button block (click)="enviarPerfil()">Enviar</button>  
+  </form>
+  
 
 </ion-content>
