@@ -22,7 +22,6 @@ export class InfoUtilPage {
   ) {
     
     let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/weblinks.php';
-
     this.http.get(url)
       .map(res => res.json())
       .subscribe(data => {
@@ -34,11 +33,7 @@ export class InfoUtilPage {
 
   } // End Constructor
 
-  /*
-    Aqui começa a parte do accordion
-    Esse código peguei do site
-    https://www.djamware.com/post/5892739480aca7411808fa9c/how-to-create-ionic-2-accordion-list
-  */ 
+
   toggleGroup(group) {
     if (this.isGroupShown(group)) {
         this.shownGroup = null;

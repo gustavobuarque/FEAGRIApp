@@ -15,16 +15,18 @@
   <p><strong>Tipo de Conexão: </strong> Conexão Wifi</p>
   <h1>Atualize seus dados</h1>
   <p>Esses dados serão necessários para lhes enviar Notificações pelas Secretarias da Faculdade</p>
-  <ion-list>
+  <ion-list no-lines>
     
     <ion-item>
       <ion-label floating>Número: RA ou Matrícula</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text"  [(ngModel)]="nRAouMat"></ion-input>
     </ion-item>
 
+    <div [ngSwitch]="usuario">
+      
     <ion-item>
       <ion-label>Tipo de Usuário</ion-label>
-      <ion-select [(ngModel)]="gaming">
+      <ion-select [(ngModel)]="usuario">
         <ion-option value="aluno">Aluno</ion-option>
         <ion-option value="funcionario">Funcionário</ion-option>
         <ion-option value="docente">Docente</ion-option>
@@ -32,27 +34,32 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngSwitchCase="'aluno'">
       <ion-label>Se aluno escolha</ion-label>
-      <ion-select [(ngModel)]="gaming">
+      <ion-select [(ngModel)]="formacao">
         <ion-option value="graduacao">Graduação</ion-option>
         <ion-option value="mestrado">Pós-Graduação - Mestrado</ion-option>
         <ion-option value="doutorado">Pós-Graduação - Doutorado</ion-option>
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Ano de Ingresso</ion-label>
-      <ion-select [(ngModel)]="gaming">
-        <ion-option value="2016">2016</ion-option>
-        <ion-option value="2015">2015</ion-option>
+    <ion-item *ngSwitchCase="'aluno'">
+      <ion-label>Disciplinas</ion-label>
+      <ion-select [(ngModel)]="disc" multiple="true">
+        <ion-option  *ngFor="let d of disciplinas">{{d.Sigla}} - Ano {{d.Ano}} - Turma {{d.Turma}}</ion-option>
       </ion-select>
     </ion-item>
+
+    <ion-item *ngSwitchCase="'aluno'">
+      <ion-label>Ano de Ingresso</ion-label>
+      <ion-datetime displayFormat="YYYY" [(ngModel)]="anoIngresso"></ion-datetime> 
+    </ion-item>
     
+    </div>
 
 
   </ion-list>
 
-  <button ion-button block>Enviar</button>
+  <button ion-button block (click)="enviarPerfil()">Enviar</button>
 
 </ion-content>
