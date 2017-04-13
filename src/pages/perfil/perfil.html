@@ -54,7 +54,7 @@
 
       <ion-item *ngSwitchCase="'aluno'">
         <ion-label>Ano de Ingresso</ion-label>
-        <ion-datetime displayFormat="YYYY" formControlName="anoIngresso"  [class.invalid]="(perfilForm.controls.anoIngresso.dirty || submitAttempt)"></ion-datetime> 
+        <ion-datetime displayFormat="YYYY" min="2000" formControlName="anoIngresso"  [class.invalid]="(perfilForm.controls.anoIngresso.dirty || submitAttempt)"></ion-datetime> 
       </ion-item>
       
       </div>
