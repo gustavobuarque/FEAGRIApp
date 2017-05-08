@@ -11,7 +11,9 @@ export class PerfilPage {
 
   perfilForm: FormGroup;
 
-  disciplinas: any;
+  graduacao: any;
+  posgrad: any;
+  data: any;
   nRAouMat: number;
   usuario: string;
   formacao: string;
@@ -27,7 +29,10 @@ export class PerfilPage {
     this.http.get(url)
       .map(res => res.json())
       .subscribe(data => {
-        this.disciplinas = data;
+        this.data = data;
+        this.posgrad = this.data[0];
+        this.graduacao = this.data[1];
+        console.log(this.graduacao);
       },
       err => {
         console.log(err);
@@ -40,6 +45,8 @@ export class PerfilPage {
         disc: [ '' ],
         anoIngresso: [ '' ]
      });
+
+     
 
   }
 

@@ -15,7 +15,7 @@ export class ContatosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
 
-    //let urlL = 'data/contatos.json';
+    //let url = 'data/contatos.json';
     let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/contatos.json';
 
     this.http.get(url) // Acessa a Url

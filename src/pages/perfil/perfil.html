@@ -38,7 +38,7 @@
 
       <ion-item *ngSwitchCase="'aluno'">
         <ion-label>Formação</ion-label>
-        <ion-select  formControlName="formacao" [class.invalid]="(perfilForm.controls.formacao.dirty || submitAttempt)">
+        <ion-select  formControlName="formacao" [(ngModel)]="formacao" [class.invalid]="(perfilForm.controls.formacao.dirty || submitAttempt)">
           <ion-option value="graduacao">Graduação</ion-option>
           <ion-option value="mestrado">Pós-Graduação - Mestrado</ion-option>
           <ion-option value="doutorado">Pós-Graduação - Doutorado</ion-option>
@@ -48,7 +48,15 @@
       <ion-item *ngSwitchCase="'aluno'">
         <ion-label>Disciplinas</ion-label>
         <ion-select formControlName="disc" multiple="true" [class.invalid]="(perfilForm.controls.disc.dirty || submitAttempt)">
-          <ion-option  *ngFor="let d of disciplinas">{{d.Sigla}} - Ano {{d.Ano}} - Turma {{d.Turma}}</ion-option>
+        
+        <div [ngSwitch]="formacao">
+
+            <div *ngSwitchCase="'graduacao'">
+              <ion-option *ngFor="let d of graduacao[i]; let i = index;">{{d.tipo}}</ion-option>
+            </div>
+        
+        </div>
+
         </ion-select>
       </ion-item>
 

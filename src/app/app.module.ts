@@ -30,7 +30,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     ContatoInfoPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      mode: 'md'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
