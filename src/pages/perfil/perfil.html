@@ -41,8 +41,8 @@
         <ion-label>Formação</ion-label>
         <ion-select  formControlName="formacao" [(ngModel)]="formacao" [class.invalid]="!perfilForm.controls.formacao.dirty || submitAttempt">
           <ion-option value="graduacao">Graduação</ion-option>
-          <ion-option value="posgraduacao">Pós-Graduação - Mestrado</ion-option>
-          <ion-option value="posgraduacao">Pós-Graduação - Doutorado</ion-option>
+          <ion-option value="posgmestrado">Pós-Graduação - Mestrado</ion-option>
+          <ion-option value="posgdoutorado">Pós-Graduação - Doutorado</ion-option>
         </ion-select>
       </ion-item>
 
@@ -53,7 +53,10 @@
             <div *ngSwitchCase="'graduacao'">
               <ion-option *ngFor="let d of graduacao">{{d.ano}} - {{d.sigla}} - Turma: {{d.turma}}</ion-option>
             </div>
-            <div *ngSwitchCase="'posgraduacao'">
+            <div *ngSwitchCase="'posgmestrado'">
+              <ion-option *ngFor="let d of posgrad">{{d.ano}} - {{d.sigla}} - Turma: {{d.turma}}</ion-option>
+            </div>
+            <div *ngSwitchCase="'posgdoutorado'">
               <ion-option *ngFor="let d of posgrad">{{d.ano}} - {{d.sigla}} - Turma: {{d.turma}}</ion-option>
             </div>
         </ion-select>
