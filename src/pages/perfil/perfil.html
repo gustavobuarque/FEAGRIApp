@@ -36,35 +36,36 @@
 
       <div [ngSwitch]="usuario">
 
-      <ion-item *ngSwitchCase="'aluno'">
+      <div *ngSwitchCase="'aluno'">
+      <ion-item>
         <ion-label>Formação</ion-label>
-        <ion-select  formControlName="formacao" [(ngModel)]="formacao" [class.invalid]="(perfilForm.controls.formacao.dirty || submitAttempt)">
+        <ion-select  formControlName="formacao" [(ngModel)]="formacao" [class.invalid]="!perfilForm.controls.formacao.dirty || submitAttempt">
           <ion-option value="graduacao">Graduação</ion-option>
-          <ion-option value="mestrado">Pós-Graduação - Mestrado</ion-option>
-          <ion-option value="doutorado">Pós-Graduação - Doutorado</ion-option>
+          <ion-option value="posgraduacao">Pós-Graduação - Mestrado</ion-option>
+          <ion-option value="posgraduacao">Pós-Graduação - Doutorado</ion-option>
         </ion-select>
       </ion-item>
 
-      <ion-item *ngSwitchCase="'aluno'">
+      <div [ngSwitch]="formacao">
+      <ion-item>
         <ion-label>Disciplinas</ion-label>
-        <ion-select formControlName="disc" multiple="true" [class.invalid]="(perfilForm.controls.disc.dirty || submitAttempt)">
-        
-        <div [ngSwitch]="formacao">
-
+        <ion-select formControlName="disc" multiple="true" [class.invalid]="perfilForm.controls.disc.dirty || submitAttempt">
             <div *ngSwitchCase="'graduacao'">
-              <ion-option *ngFor="let d of graduacao[i]; let i = index;">{{d.tipo}}</ion-option>
+              <ion-option *ngFor="let d of graduacao">{{d.ano}} - {{d.sigla}} - Turma: {{d.turma}}</ion-option>
             </div>
-        
-        </div>
-
+            <div *ngSwitchCase="'posgraduacao'">
+              <ion-option *ngFor="let d of posgrad">{{d.ano}} - {{d.sigla}} - Turma: {{d.turma}}</ion-option>
+            </div>
         </ion-select>
       </ion-item>
+      </div>
 
-      <ion-item *ngSwitchCase="'aluno'">
+      <ion-item>
         <ion-label>Ano de Ingresso</ion-label>
         <ion-datetime displayFormat="YYYY" min="2000" formControlName="anoIngresso"  [class.invalid]="(perfilForm.controls.anoIngresso.dirty || submitAttempt)"></ion-datetime> 
       </ion-item>
       
+      </div>
       </div>
 
 

@@ -15,7 +15,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
-
 @NgModule({
   declarations: [
     MyApp,

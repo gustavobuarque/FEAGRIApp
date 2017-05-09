@@ -1,11 +1,12 @@
-import { Http } from '@angular/http';
+import { PerfilService } from './../../providers/perfil.service';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-perfil',
-  templateUrl: 'perfil.html'
+  templateUrl: 'perfil.html',
+  providers: [PerfilService]
 })
 export class PerfilPage {
 
@@ -22,17 +23,19 @@ export class PerfilPage {
 
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public alertCtrl: AlertController, public formBuilder: FormBuilder) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertCtrl: AlertController, 
+    public formBuilder: FormBuilder,
+    public PerfilService: PerfilService
+    ) {
     
-    let url = 'data/disciplinas.json';
-    //let url = 'http://www.feagri.unicamp.br/portal/sistemas-intranet/disciplinas';
-    this.http.get(url)
-      .map(res => res.json())
+    this.PerfilService.getDisciplinas()
       .subscribe(data => {
         this.data = data;
-        this.posgrad = this.data[0];
-        this.graduacao = this.data[1];
-        console.log(this.graduacao);
+        this.posgrad = this.data[0].data;
+        this.graduacao = this.data[1].data;
       },
       err => {
         console.log(err);
@@ -45,8 +48,6 @@ export class PerfilPage {
         disc: [ '' ],
         anoIngresso: [ '' ]
      });
-
-     
 
   }
 
