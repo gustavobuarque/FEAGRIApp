@@ -1,21 +1,14 @@
 
 <ion-header>
 
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Grade Horária</ion-title>
-  </ion-navbar>
+  <custom-header [title]="'Grade Horária'"></custom-header>
   <ion-segment>
     <h6 margin>{{diasemana}}</h6>
   </ion-segment>
 </ion-header>
 
-
 <ion-content>
-  
-  
+ 
 
   <ion-card *ngFor="let h of horarios">
 

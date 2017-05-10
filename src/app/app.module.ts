@@ -10,6 +10,7 @@ import { CircularInternoPage } from './../pages/circular-interno/circular-intern
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { CustomHeaderComponent } from './../components/custom-header/custom-header';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,6 +19,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 @NgModule({
   declarations: [
     MyApp,
+    CustomHeaderComponent,
     CircularInternoPage,
     ContatosPage,
     GradeHorariaPage,
