@@ -11,6 +11,7 @@ import { InfoUtilPage } from './../pages/info-util/info-util';
 import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protocolo-eletronico';
 import { ContatosPage } from './../pages/contatos/contatos';
 import { GradeHorariaPage } from './../pages/grade-horaria/grade-horaria';
+import { OneSignal } from '@ionic-native/onesignal';
 
 //import { InAppBrowser } from '@ionic-native/in-app-browser'; //não está funcionando
 
@@ -24,7 +25,13 @@ export class MyApp {
 
   pages: Array<{icon: string, title: string, component: any, openLink: boolean}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private oneSignal: OneSignal
+    ) {
+    
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -47,9 +54,28 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
+      setTimeout(() => {
+        this.splashScreen.hide();
+      }, 100);
+
+      // Enable to debug issues.
+      // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+      
+      this.oneSignal.startInit("f6feef19-57b8-45c3-b2ee-87c4f0b77029", "540178667802");
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+        // do something when notification is received
+      });
+
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+      });
+
+      this.oneSignal.endInit();
+    
+      });
   }
+
 
   openPage(page) {
     // Reset the content nav to have just this page

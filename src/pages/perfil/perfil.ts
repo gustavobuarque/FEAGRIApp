@@ -1,7 +1,8 @@
 import { PerfilService } from './../../providers/perfil.service';
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @Component({
   selector: 'page-perfil',
@@ -21,6 +22,12 @@ export class PerfilPage {
   disc: any;
   anoIngresso: number;
 
+  usuarioAtual: string;
+  matriculaAtual: string;
+  formacaoAtual: string;
+  disciplinaAtual: string[];
+  anoAtual: string;
+
   submitAttempt: boolean = false;
 
   constructor(
@@ -28,9 +35,20 @@ export class PerfilPage {
     public navParams: NavParams, 
     public alertCtrl: AlertController, 
     public formBuilder: FormBuilder,
-    public PerfilService: PerfilService
+    public PerfilService: PerfilService,
+    private oneSignal: OneSignal,
+    public loadingCtrl: LoadingController,
     ) {
     
+    this.oneSignal.getTags()
+      .then((res) => {
+        this.matriculaAtual = res.matricula; 
+        this.usuarioAtual = res.usuario; 
+        this.formacaoAtual = res.formacao; 
+        this.disciplinaAtual = res.disciplinas.split(","); 
+        this.anoAtual = res.ano; 
+      });
+
     this.PerfilService.getDisciplinas()
       .subscribe(data => {
         this.data = data;
@@ -57,8 +75,29 @@ export class PerfilPage {
     if(!this.perfilForm.valid){
       this.showAlert();
     } else {
-      console.log("Sucesso no envio");
-      console.log(this.perfilForm.value);
+      
+      // Limpa os dados existentes no oneSignal
+      this.oneSignal.deleteTags(["usuario","matricula","formacao","disciplinas","ano"]);    
+      
+      if(this.usuario == "aluno"){
+        //console.log(this.usuario, this.nRAouMat, this.formacao, this.disc, this.anoIngresso);
+        this.oneSignal.sendTags({
+          "usuario":this.usuario, 
+          "matricula":this.nRAouMat,
+          "formacao":this.formacao,
+          "disciplinas":this.disc.toString(),
+          "ano":this.anoIngresso
+        });
+      } else {
+        //console.log(this.usuario, this.nRAouMat);
+         this.oneSignal.sendTags({
+          "usuario":this.usuario, 
+          "matricula":this.nRAouMat
+        });
+      }
+
+      this.presentLoadingText();
+      
     }
     
   }
@@ -70,6 +109,24 @@ export class PerfilPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  presentLoadingText() {
+    let loading = this.loadingCtrl.create({
+      //spinner: 'hide',
+      content: 'Enviando e salvando dados...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 2000);
+
+    setTimeout(() => {
+      this.navCtrl.setRoot(PerfilPage);
+    }, 2000);
+
   }
   
 

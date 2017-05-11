@@ -1,12 +1,11 @@
 <ion-header>
   <custom-header [title]="'Contatos'"></custom-header>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getContatos($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  
-  <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
-  </ion-toolbar>
   
   <ion-list>
     <ion-item-sliding *ngFor="let contato of contatos; let i = index;">

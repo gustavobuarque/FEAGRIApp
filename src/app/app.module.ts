@@ -15,6 +15,8 @@ import { CustomHeaderComponent } from './../components/custom-header/custom-head
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { OneSignal } from '@ionic-native/onesignal';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

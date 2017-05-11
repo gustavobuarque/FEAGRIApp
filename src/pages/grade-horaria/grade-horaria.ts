@@ -1,6 +1,6 @@
 import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -9,10 +9,21 @@ import 'rxjs/add/operator/map';
 })
 export class GradeHorariaPage {
 
+  public loading = this.loadingCtrl.create({
+        content: 'Carregando...'
+    });
   horarios: any[];
   diasemana: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
+  constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams, 
+      private http: Http, 
+      private loadingCtrl: LoadingController
+    ) {
+
+    // Show the loading message
+    this.loading.present();
 
     let hoje = new Date();
     let semana = '';
@@ -61,6 +72,9 @@ export class GradeHorariaPage {
         },
         err => {
           console.log(err);
+        },
+        () => {
+            this.loading.dismiss();
         });
   
   } //End Constructor
