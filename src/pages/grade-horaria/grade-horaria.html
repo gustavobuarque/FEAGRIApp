@@ -9,7 +9,8 @@
 
 <ion-content>
  
-
+ <div *ngIf="!fimdesemana">
+  
   <ion-card *ngFor="let h of horarios">
 
     <ion-card-content no-padding>
@@ -39,5 +40,16 @@
     </ion-card-content>
 
   </ion-card>
+ 
+ </div>
+
+  <div *ngIf="fimdesemana">
+    <ion-card>
+      <ion-card-content>
+        <p color="danger">Não existe grade de horários de aula neste dia.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 
 </ion-content>

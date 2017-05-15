@@ -14,6 +14,7 @@ export class GradeHorariaPage {
     });
   horarios: any[];
   diasemana: string;
+  fimdesemana: boolean = false;
 
   constructor(
       public navCtrl: NavController, 
@@ -32,6 +33,7 @@ export class GradeHorariaPage {
       switch (new Date().getDay()) {
           case 0:
               semana = "0domingo";
+              this.fimdesemana = true;
               this.diasemana = "Domingo"
               break;
           case 1:
@@ -57,6 +59,7 @@ export class GradeHorariaPage {
               break;
           case 6:
               semana = "6sábado";
+              this.fimdesemana = true;
               diasemana = "Sábado"
       } // End Switch
 
