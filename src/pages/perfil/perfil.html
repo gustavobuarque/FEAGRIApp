@@ -19,7 +19,7 @@
     <li><strong>Ano: </strong>{{ anoAtual }}</li>
   </ul>
 
-  <form [formGroup]="perfilForm">
+  <form [formGroup]="perfilForm"  (ngSubmit)="enviarPerfil(); $event.preventDefault()">
     
     <ion-list no-lines>
       
@@ -78,7 +78,7 @@
 
     </ion-list>
 
-    <button ion-button block (click)="enviarPerfil()">Enviar</button>  
+    <button ion-button block type="submit" [disabled]="perfilForm.invalid">Enviar</button>  
   </form>
   
 
