@@ -7,13 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><img src="http://www.feagri.unicamp.br/portal/{{info.foto}}"> {{info.nome}}</ion-title>
+    <ion-title> {{info.nome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-
+  <img src="http://www.feagri.unicamp.br/portal/{{info.foto}}">
   <p>Função: {{info.funcao}} </p>
   <p>Grupo de Usuários: {{info.gruponame}} </p>
   <p>Telefone:  <a href="tel:{{info.telefone}}">{{info.telefone}}</a> </p>
