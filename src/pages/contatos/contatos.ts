@@ -30,7 +30,7 @@ export class ContatosPage {
     this.loading.present();
 
     //let url = 'data/contatos.json';
-    let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/contatos.json';
+    let url = 'http://www.feagri.unicamp.br/portal/app/contatos.json';
 
     this.http.get(url) // Acessa a Url
       .map(res => res.json()) // Converte o conteúdo da Url para JSON
