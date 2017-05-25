@@ -14,10 +14,17 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 export class ContatoInfoPage {
 
   info: any;
+  showlattes: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    console.log("Dados recebidos: ", navParams.get('info'));
     this.info = navParams.get('info');
+    if(this.info.lattes){
+      this.showlattes = true;
+    }
+  }
+
+  openLattes() {
+      window.open(this.info.lattes, '_blank');
   }
 
 }

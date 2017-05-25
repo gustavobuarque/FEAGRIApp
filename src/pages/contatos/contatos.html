@@ -11,7 +11,8 @@
     <ion-item-sliding *ngFor="let contato of contatos; let i = index;">
       <ion-item>
         <ion-avatar item-left>
-          <img src="http://www.feagri.unicamp.br/portal/{{contato.foto}}">
+          <img src="http://www.feagri.unicamp.br/portal/images/fotosservidores/{{contato.fotopid}}/_thumb1/{{contato.fotopath}}">
+          
         </ion-avatar>
         <h2>{{contato.nome}}</h2>
         <p>{{contato.gruponame}} | {{contato.funcao}}</p>

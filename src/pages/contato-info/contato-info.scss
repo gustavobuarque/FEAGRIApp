@@ -1,13 +1,25 @@
 page-contato-info {
-    ion-navbar{
-        ion-title{
-            font-size: 10px;
-            img{
-                width: 40px;
-                height: 40px;
-                border-radius: 25px;
+    ion-content {
+        text-align: center;
+        
+        background-color: map-get($colors , primary ) !important;
+        
+        h2, p.info { color: #ffffff; }
+        .botoes{
+            clear: both;
+            a {
+                color: map-get($colors , primary );
+                text-decoration: none;
+                display: inline-block;
+                margin: 10px;
             }
         }
+
+        img{
+            width: 150px;
+            height: 150px;
+            border: 2px solid #ffffff;
+            border-radius: 75px;
+        }
     }
-    
 }
