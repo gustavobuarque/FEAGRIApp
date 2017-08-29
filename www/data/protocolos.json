@@ -1,0 +1,28 @@
+[{
+    "protocolo":"2016144",
+    "datasolicita":"2016-09-22 00:00:00",
+    "servico":"Solicitações Diversas",
+    "nome":"Camila da Silva Dourado",
+    "retornos": [
+        {
+            "id":"143",
+            "local":"",
+            "descricao":"",
+            "data":"2016-09-30 00:00:00",
+            "status":"0",
+            "usuario":"fabio.augusto",
+            "anexo":"images/posgraduacao/protocolo/images/143/parecer304-2016.pdf"
+        },
+        {
+            "id":"142",
+            "local":"",
+            "descricao":"Solicitação Aprovada.",
+            "data":"2016-09-22 00:00:00",
+            "status":"3",
+            "usuario":"rita",
+            "anexo":""
+        }
+    ]
+}]
+
+

@@ -1,21 +1,39 @@
-<!--
-  Generated template for the Contatos page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Contatos</ion-title>
-  </ion-navbar>
-
+  <custom-header [title]="'Contatos'"></custom-header>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getContatos($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
+  
+  <ion-list>
+    <ion-item-sliding *ngFor="let contato of contatos; let i = index;">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="http://www.feagri.unicamp.br/portal/images/fotosservidores/{{contato.fotopid}}/_thumb1/{{contato.fotopath}}">
+          
+        </ion-avatar>
+        <h2>{{contato.nome}}</h2>
+        <p>{{contato.gruponame}} | {{contato.funcao}}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <a href="mailto:{{contato.email}}" ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </a>
+        <a href="tel:{{contato.telefone}}" ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Ligar
+        </a>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="openInfo(i)">
+          <ion-icon name="more"></ion-icon>
+          Info
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>

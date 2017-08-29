@@ -1,0 +1,23 @@
+<ion-content>
+
+  <ion-navbar></ion-navbar>
+  
+  <img src="http://www.feagri.unicamp.br/portal/images/fotosservidores/{{info.fotopid}}/{{info.fotopath}}">
+  <h2> {{info.nome}}</h2>
+  <p class="info">{{info.gruponame}} / {{info.funcao}} </p>
+  <div class="botoes">
+    <a href="mailto:{{info.email}}" ion-fab color="light">
+      <ion-icon name="mail"></ion-icon>
+    </a>
+    <a href="tel:{{info.telefone}}" ion-fab color="light">
+      <ion-icon name="call"></ion-icon>
+    </a>
+    
+    <a *ngIf="showlattes" (click)="openLattes()" ion-fab color="light">
+      <ion-icon name="link"></ion-icon>
+    </a>
+  </div>
+  
+  <p class="info">{{info.orgao}}</p>
+
+</ion-content>

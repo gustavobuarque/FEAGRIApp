@@ -1,22 +1,56 @@
+import { Http } from '@angular/http';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the InfoUtil page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-info-util',
   templateUrl: 'info-util.html'
 })
 export class InfoUtilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  categorias: any;
+  shownGroup = null;
+  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private http: Http, 
+    public platform: Platform,
+    private iab: InAppBrowser
+  ) {
+    
+    let url = 'http://www.feagri.unicamp.br/portal/templates/simplesimon/includes/weblinks.php';
+    this.http.get(url)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.categorias = data;
+      },
+      err => {
+        console.log(err);
+      });
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InfoUtilPage');
+  } // End Constructor
+
+
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+        this.shownGroup = null;
+    } else {
+        this.shownGroup = group;
+    }
+  }
+  
+  isGroupShown(group) {
+      return this.shownGroup === group;
+  }
+
+  openBrowser(link: string) {
+      this.platform.ready().then(() => {
+        let browser =  this.iab.create(link, '_blank');
+        browser.show();
+      });
   }
 
 }

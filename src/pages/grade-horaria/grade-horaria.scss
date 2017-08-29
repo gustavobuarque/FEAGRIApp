@@ -1,3 +1,25 @@
 page-grade-horaria {
+    div.h,
+    div.s
+    {
+        font-size: 11px;
+        color: rgb(120, 120, 120);
+    }
+
+    .disciplina,
+    .docenteName {
+        font-size: 1.5rem;
+    }
+    .docente{
+        align-content: center;
+        align-items: center;
+    }
+    .docenteName {
+        color: rgb(180, 180, 180);
+    }
+
+    .docenteImg {
+        border-radius: 50%;
+    }
 
 }

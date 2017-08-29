@@ -1,0 +1,25 @@
+page-contato-info {
+    ion-content {
+        text-align: center;
+        
+        background-color: map-get($colors , primary ) !important;
+        
+        h2, p.info { color: #ffffff; }
+        .botoes{
+            clear: both;
+            a {
+                color: map-get($colors , primary );
+                text-decoration: none;
+                display: inline-block;
+                margin: 10px;
+            }
+        }
+
+        img{
+            width: 150px;
+            height: 150px;
+            border: 2px solid #ffffff;
+            border-radius: 75px;
+        }
+    }
+}

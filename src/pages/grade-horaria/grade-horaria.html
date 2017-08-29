@@ -1,29 +1,55 @@
 
 <ion-header>
 
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>GradeHoraria</ion-title>
-  </ion-navbar>
-
+  <custom-header [title]="'Grade Horária'"></custom-header>
+  <ion-segment>
+    <h6 margin>{{diasemana}}</h6>
+  </ion-segment>
 </ion-header>
 
-
-<ion-content padding>
+<ion-content>
+ 
+ <div *ngIf="!fimdesemana">
   
-  <h3>Terça-feira</h3>
-  <ion-card>
+  <ion-card *ngFor="let h of horarios">
 
-    <ion-card-header>
-      Card Header
-    </ion-card-header>
-
-    <ion-card-content>
-      <!-- Add card content here! -->
+    <ion-card-content no-padding>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="h">{{h.Horario}}</div>
+          </ion-col>
+          <ion-col col-auto>
+            <div class="s"><strong>Sala: </strong>{{h.Sala}} | <strong>Turma: </strong>{{h.Turma}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-auto>
+            <div class="disciplina"><strong>{{h.Sigla}}</strong> - {{h.Disciplina}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="docente">
+          <ion-col col-2>
+            <img class="docenteImg" src="http://www.feagri.unicamp.br/portal/{{h.Img}}">
+          </ion-col>
+          <ion-col col-auto>
+            <span class="docenteName">{{h.Docente}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
 
   </ion-card>
+ 
+ </div>
+
+  <div *ngIf="fimdesemana">
+    <ion-card>
+      <ion-card-content>
+        <p color="danger">Não existe grade de horários de aula neste dia.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 
 </ion-content>

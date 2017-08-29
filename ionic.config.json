@@ -1,6 +1,15 @@
 {
-  "name": "FEAGRIApp",
-  "app_id": "",
-  "v2": true,
-  "typescript": true
+  "name": "appFEAGRI",
+  "app_id": "3843c60d",
+  "integrations": {
+    "gulp": {},
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "watchPatterns": [
+    "scss/**/*"
+  ],
+  "gulp": {
+    "enabled": false
+  }
 }

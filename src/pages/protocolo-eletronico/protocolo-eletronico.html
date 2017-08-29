@@ -5,17 +5,74 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>ProtocoloEletronico</ion-title>
-  </ion-navbar>
-
+  <custom-header [title]="'Protocolo Eletrônico'"></custom-header>
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label>Solicitante</ion-label>
+      <ion-select [(ngModel)]="protSolicitante">
+        <ion-option value="0">Alunos</ion-option>
+        <ion-option value="1">Funcionários</ion-option>
+        <ion-option value="2">Outros</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div [ngSwitch]="protSolicitante">
+      <ion-item *ngSwitchCase="'2'">
+        <ion-label floating>CPF</ion-label>
+        <ion-input type="number" [(ngModel)]="protOutros"></ion-input>
+      </ion-item>
+
+       <ion-item *ngSwitchCase="'0'">
+        <ion-label floating>Aluno (RA)</ion-label>
+        <ion-input type="number" [(ngModel)]="protAlunoRA"></ion-input>
+      </ion-item>
+
+       <ion-item *ngSwitchCase="'1'">
+        <ion-label floating>Funcionário/Docente (Matrícula)</ion-label>
+        <ion-input type="number" [(ngModel)]="protFuncionario"></ion-input>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-label floating>Protocolo Número</ion-label>
+      <ion-input type="number" [(ngModel)]="protNumero"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="buscarProtocolo()">
+    <ion-icon name="search"></ion-icon> Buscar
+  </button>
+
+  <ion-list *ngFor="let protocolo of protResult">
+    <p text-center><strong>Resultado</strong></p>
+    <ion-item>
+      <p><span floating>Data Solicitação:</span> {{protocolo.datasolicita}}</p>
+      <p>Serviço Solicitado: {{protocolo.servico}}</p>
+      <p>Solicitante: {{protocolo.nome}}</p>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-card *ngFor="let ret of protRetorno">
+    <ion-card-content>
+      <ion-row>
+        <ion-col><strong>Data Envio/Retorno: </strong>{{ret.data}}</ion-col>
+        <ion-col><strong>Status: </strong>{{ret.status}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><strong>Descrição: </strong>{{ret.descricao}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><strong>Anexo: </strong>{{ret.anexo}}</ion-col>
+      </ion-row>
+       <ion-row>
+        <ion-col><strong>Local: </strong>{{ret.local}}</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
