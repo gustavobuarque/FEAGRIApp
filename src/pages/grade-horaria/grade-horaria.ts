@@ -29,7 +29,16 @@ export class GradeHorariaPage {
     let hoje = new Date();
     let semana = '';
     let diasemana = '';
+    let semestre = '';
+    let mes = hoje.getMonth();
     let ano = hoje.getFullYear();
+
+      /* correção para 1º semestre ou 2º Semestre */
+      if (mes >= 7) {
+        semestre = "2";
+      } else {
+        semestre = "1";
+      }
       switch (new Date().getDay()) {
           case 0:
               semana = "0domingo";
@@ -66,8 +75,8 @@ export class GradeHorariaPage {
       this.diasemana = diasemana;
       
       //let url = 'data/gradehoraria.json';
-      let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano="+ano+"&salaaula_anosemestre=1&salaaula_semana="+semana;
-
+      let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano="+ano+"&salaaula_anosemestre="+semestre+"&salaaula_semana="+semana
+      
       this.http.get(url) // Acessa a Url
         .map(res => res.json()) // Converte o conteúdo da Url para JSON
         .subscribe(data => { // Passa o objeto JSON para dentro de um array na Classe ContatosPage
