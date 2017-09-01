@@ -1,3 +1,4 @@
+import { OrderByPipe } from './../pipes/order-by/order-by';
 import { ContatoInfoPage } from './../pages/contato-info/contato-info';
 import { SobrePage } from './../pages/sobre/sobre';
 import { RestaurantePage } from './../pages/restaurante/restaurante';
@@ -30,7 +31,8 @@ import { OneSignal } from '@ionic-native/onesignal';
     ProtocoloEletronicoPage,
     RestaurantePage,
     SobrePage,
-    ContatoInfoPage
+    ContatoInfoPage,
+    OrderByPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
