@@ -2,7 +2,39 @@
   <custom-header [title]="'Circular Interno'"></custom-header>
 </ion-header>
 
-
 <ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label>Circulares</ion-label>
+          <ion-select [(ngModel)]="selectCircular">
+            <ion-option value="9">Circular 1</ion-option>
+            <ion-option value="69">Circular 2</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
+      <button ion-button block (click)="listarHorarios()">Listar</button>
+      
+      <ion-list *ngFor="let circular of circulares" class="circular" no-padding>
+          
+          <ion-item no-padding>
+            
+              <ion-grid>
+                  <ion-row>
+                    <ion-col col-1>
+                        <ion-badge>{{circular.ID_CIRCULAR}}</ion-badge>
+                    </ion-col>    
+                    <ion-col col-2 text-center>
+                        <div *ngIf="circular.ONIBUS_ADAPTADO == 'Sim'">
+                            <i class="fa fa-wheelchair"></i>
+                        </div>
+                    </ion-col>
+                    <ion-col col-6 text-center>{{circular.REFERENCIA}}</ion-col>
+                    <ion-col col-3 text-right>{{circular.HORARIO}}</ion-col>
+                  </ion-row>
+              </ion-grid>
+            
+          </ion-item>
+      
+        </ion-list>
 </ion-content>

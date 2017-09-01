@@ -11,9 +11,8 @@ import { InfoUtilPage } from './../pages/info-util/info-util';
 import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protocolo-eletronico';
 import { ContatosPage } from './../pages/contatos/contatos';
 import { GradeHorariaPage } from './../pages/grade-horaria/grade-horaria';
-import { OneSignal } from '@ionic-native/onesignal';
 
-//import { InAppBrowser } from '@ionic-native/in-app-browser'; //não está funcionando
+//import { OneSignal } from '@ionic-native/onesignal'; // Desabilitar isso para rodar via service
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +28,7 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private oneSignal: OneSignal
+    //private oneSignal: OneSignal
     ) {
     
     this.initializeApp();
@@ -58,6 +57,8 @@ export class MyApp {
         this.splashScreen.hide();
       }, 100);
 
+      // Desabilitar daqui
+    /*
       // Enable to debug issues.
       // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
       
@@ -72,8 +73,10 @@ export class MyApp {
       });
 
       this.oneSignal.endInit();
-    
-      });
+*/
+      // Até aqui para desabilitar cordova
+      
+    });
   }
 
 
@@ -84,32 +87,7 @@ export class MyApp {
       this.nav.setRoot(page.component);
     } else {
       window.open(page.component, '_blank')
-      // A função abaixo não está funcionando pois não consigo importar o módulo InAppBrowser
-      // Verificar motivo
-      /*
-      this.platform.ready().then(() => {
-        let browser = new InAppBrowser(page.component,'_blank');
-      });
-      */
     }
-  }
-
-  /*
-    Essa função abre em um browser a Url
-    this.platform.ready().then(() => {
-        let browser = new InAppBrowser(page.component,'_blank');
-      });
-    Peguei isso do seguinte site
-    https://www.techiediaries.com/mobiledev/cordova-inappbrowser-example-ionic2-native/
-
-    Resumidamente, você deve ter o cordova instalado, depois
-    você deve adicionar a plataforma alvo
-    $ cordova platform add android 
-    Se você estiver em um mac pode adicionar
-    $ cordova platform add iOS
-    E por final você deve instalar o pluggin do cordova InAppBrowser
-    $ cordova plugin add cordova-plugin-inappbrowser
-  */
- 
+  } 
 
 }
