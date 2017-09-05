@@ -1,3 +1,4 @@
+import { LimpaStringPipe } from './../pipes/limpa-string/limpa-string';
 import { OrderByPipe } from './../pipes/order-by/order-by';
 import { ContatoInfoPage } from './../pages/contato-info/contato-info';
 import { SobrePage } from './../pages/sobre/sobre';
@@ -32,7 +33,8 @@ import { OneSignal } from '@ionic-native/onesignal';
     RestaurantePage,
     SobrePage,
     ContatoInfoPage,
-    OrderByPipe
+    OrderByPipe,
+    LimpaStringPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp, {

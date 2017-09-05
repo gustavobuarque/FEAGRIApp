@@ -22,7 +22,8 @@
               <strong>Salada: </strong>{{c.SALADA}}<br>
               <strong>Sobremesa: </strong>{{c.SOBREMESA}}<br>
               <strong>Suco: </strong>{{c.SUCO}}<br>
-              <strong>Observação: </strong>{{c.OBS}}
+              <strong>Observação: </strong>{{c.OBS | limpaString:0}}
+              <span class="red">{{c.OBS | limpaString:2}}</span>
             </ion-card-content>
         
           </ion-card>
