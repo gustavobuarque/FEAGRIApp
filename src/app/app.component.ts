@@ -12,7 +12,7 @@ import { ProtocoloEletronicoPage } from './../pages/protocolo-eletronico/protoco
 import { ContatosPage } from './../pages/contatos/contatos';
 import { GradeHorariaPage } from './../pages/grade-horaria/grade-horaria';
 
-//import { OneSignal } from '@ionic-native/onesignal'; // Desabilitar isso para rodar via service
+import { OneSignal } from '@ionic-native/onesignal'; // Comentar isso para rodar local
 
 @Component({
   templateUrl: 'app.html'
@@ -24,11 +24,13 @@ export class MyApp {
 
   pages: Array<{icon: string, title: string, component: any, openLink: boolean}>;
 
+  // Comentar oneSignal: OneSignal para rodar localmente
+
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    //private oneSignal: OneSignal
+    private oneSignal: OneSignal
     ) {
     
     this.initializeApp();
@@ -57,8 +59,8 @@ export class MyApp {
         this.splashScreen.hide();
       }, 100);
 
-      // Desabilitar daqui
-    /*
+      // Comentar daqui
+    
       // Enable to debug issues.
       // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
       
@@ -73,8 +75,8 @@ export class MyApp {
       });
 
       this.oneSignal.endInit();
-*/
-      // Até aqui para desabilitar cordova
+
+      // Até aqui para rodar localmente
       
     });
   }

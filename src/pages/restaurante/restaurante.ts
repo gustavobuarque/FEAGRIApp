@@ -21,8 +21,8 @@ export class RestaurantePage {
     private http: Http
     ){
 
-      let url = 'assets/data/cardapio.json';
-      //let url = 'http://www.feagri.unicamp.br/portal/app/cardapio.json';
+      //let url = 'assets/data/cardapio.json';
+      let url = 'http://www.feagri.unicamp.br/portal/app/cardapio.json';
   
       this.http.get(url) // Acessa a Url
         .map(res => res.json()) // Converte o conteúdo da Url para JSON

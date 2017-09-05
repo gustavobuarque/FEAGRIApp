@@ -16,12 +16,12 @@ export class CircularInternoPage {
   items: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
-    let url = 'assets/data/circular.json';
-    //let url = 'http://www.feagri.unicamp.br/portal/app/contatos.json';
+    //let url = 'assets/data/circular.json';
+    let url = 'http://www.feagri.unicamp.br/portal/app/circular.json';
 
     this.http.get(url) // Acessa a Url
       .map(res => res.json()) // Converte o conteúdo da Url para JSON
-      .subscribe(data => { // Passa o objeto JSON para dentro de um array na Classe ContatosPage
+      .subscribe(data => { // Passa o objeto JSON para dentro de um array
           this.items = data.CIRCULARES;
       },
       err => {
