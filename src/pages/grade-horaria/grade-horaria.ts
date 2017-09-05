@@ -75,7 +75,7 @@ export class GradeHorariaPage {
       this.diasemana = diasemana;
       
       //let url = 'data/gradehoraria.json';
-      let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano="+ano+"&salaaula_anosemestre="+semestre+"&salaaula_semana="+semana
+      let url = "http://www.feagri.unicamp.br/portal/sistemas-intranet/grade-horarios?salaaula_ativa=S&salaaula_ano='"+ano+"'&salaaula_anosemestre='"+semestre+"'&salaaula_semana="+semana;
       
       this.http.get(url) // Acessa a Url
         .map(res => res.json()) // Converte o conteúdo da Url para JSON

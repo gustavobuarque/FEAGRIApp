@@ -1,4 +1,12 @@
 page-restaurante {
+  ion-card-header{
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+  p {
+    margin: 10px 0;
+  }
   span.red{
     color: red;
   }

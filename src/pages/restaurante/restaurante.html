@@ -11,19 +11,19 @@
           
           <ion-card *ngFor="let c of cardapioHoje">
             <ion-card-header>
-                {{c.TIPO}}
+                <h1>{{c.TIPO}}</h1>
             </ion-card-header>
                 
-            <ion-card-content>
-              <strong>Acompanhamento: </strong>{{c.ACOMPANHAMENTO}}<br>
-              <strong>Prato Principal: </strong>{{c.PRATO_PRINCIPAL}}<br>
-              <strong>Guarnição: </strong>{{c.GUARNICAO}}<br>
-              <strong>PTS: </strong>{{c.PTS}}<br>
-              <strong>Salada: </strong>{{c.SALADA}}<br>
-              <strong>Sobremesa: </strong>{{c.SOBREMESA}}<br>
-              <strong>Suco: </strong>{{c.SUCO}}<br>
-              <strong>Observação: </strong>{{c.OBS | limpaString:0}}
-              <span class="red">{{c.OBS | limpaString:2}}</span>
+            <ion-card-content text-center>
+              <p><strong>Acompanhamento: </strong><br>{{c.ACOMPANHAMENTO}}<br></p>
+              <p><strong>Prato Principal: </strong><br>{{c.PRATO_PRINCIPAL}}<br></p>
+              <p><strong>Guarnição: </strong><br>{{c.GUARNICAO}}<br></p>
+              <p><strong>PTS: </strong><br>{{c.PTS}}<br></p>
+              <p><strong>Salada: </strong><br>{{c.SALADA}}<br></p>
+              <p><strong>Sobremesa: </strong><br>{{c.SOBREMESA}}<br></p>
+              <p><strong>Suco: </strong><br>{{c.SUCO}}<br></p>
+              <p><strong>Observação: </strong><br>{{c.OBS | limpaString:0}}<br></p>
+              <p><span class="red">{{c.OBS | limpaString:2}}</span></p>
             </ion-card-content>
         
           </ion-card>
