@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -24,15 +24,19 @@ export class MyApp {
 
   pages: Array<{icon: string, title: string, component: any, openLink: boolean}>;
 
+  msgOnesignal: any;
+
+  iosSettings:any = {};
+
   // Comentar oneSignal: OneSignal para rodar localmente
 
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private oneSignal: OneSignal
+    public alertCtrl: AlertController,
+    private oneSignal: OneSignal    
     ) {
-    
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -60,27 +64,43 @@ export class MyApp {
       }, 100);
 
       // Comentar daqui
-    
+
       // Enable to debug issues.
       // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
-      
+      this.iosSettings["kOSSettingsKeyAutoPrompt"] = true;
+      this.iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
+
+
       this.oneSignal.startInit("f6feef19-57b8-45c3-b2ee-87c4f0b77029", "540178667802");
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+      this.oneSignal.iOSSettings(this.iosSettings);
+      this.oneSignal.handleNotificationReceived().subscribe((jsonData) => {
         // do something when notification is received
       });
 
-      this.oneSignal.handleNotificationOpened().subscribe(() => {
+      this.oneSignal.handleNotificationOpened().subscribe(jsonData => {
         // do something when a notification is opened
+        // Caso pare de funcionar provavelmente mudou objeto jsonData, nesse caso é interessante habilitar 
+        // a linha abaixo para ver como objeto está sendo recebido
+        // this.showAlert("modal", JSON.stringfy(jsonData));
+        this.showAlert(jsonData.notification.payload.title, jsonData.notification.payload.body);
       });
 
       this.oneSignal.endInit();
 
       // Até aqui para rodar localmente
-      
+    
     });
   }
 
+  showAlert(t:any, b:any) {
+    let alert = this.alertCtrl.create({
+      title: t,
+      subTitle: b,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
   openPage(page) {
     // Reset the content nav to have just this page

@@ -12,8 +12,8 @@ export class PerfilService {
   }
 
   getDisciplinas(): Observable<[{}]> {
-    let url = 'data/disciplinas.json';
-    //let url = 'http://www.feagri.unicamp.br/portal/sistemas-intranet/disciplinas';
+    //let url = 'data/disciplinas.json';
+    let url = 'http://www.feagri.unicamp.br/portal/sistemas-intranet/disciplinas';
     return this.http.get(url)
       .map((res:Response) => res.json() as [{}]);
   }

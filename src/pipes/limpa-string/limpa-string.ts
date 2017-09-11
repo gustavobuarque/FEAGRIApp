@@ -6,8 +6,8 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 @Injectable()
 export class LimpaStringPipe implements PipeTransform {
   /*
-    Pega um valor, divide a string em peedaços e os argumentos são as posições dentro do array.
-   */
+    Retira o texto dentro da tag FONT que está no cardápio.
+  */
 
   transform(value, i:number) {
     const regex = /(?:<(FONT)[^>]*?>(.*?)<\/\1>)/g;
