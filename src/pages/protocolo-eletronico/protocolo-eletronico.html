@@ -9,9 +9,9 @@
     <ion-item>
       <ion-label>Solicitante</ion-label>
       <ion-select [(ngModel)]="protSolicitante">
-        <ion-option value="0">Alunos</ion-option>
-        <ion-option value="1">Funcionários</ion-option>
-        <ion-option value="2">Outros</ion-option>
+        <ion-option value="0">Aluno</ion-option>
+        <ion-option value="1">Funcionário</ion-option>
+        <ion-option value="2">Outro</ion-option>
       </ion-select>
     </ion-item>
 
@@ -45,7 +45,7 @@
   <ion-list *ngFor="let protocolo of protResult">
     <p text-center><strong>Resultado</strong></p>
     <ion-item>
-      <p><span floating>Data Solicitação:</span> {{protocolo.datasolicita}}</p>
+      <p><span floating>Data Solicitação:</span> {{protocolo.datasolicita | date:'dd/MM/y'}}</p>
       <p>Serviço Solicitado: {{protocolo.servico}}</p>
       <p>Solicitante: {{protocolo.nome}}</p>
     </ion-item>
@@ -55,14 +55,16 @@
   <ion-card *ngFor="let ret of protRetorno">
     <ion-card-content>
       <ion-row>
-        <ion-col><strong>Data Envio/Retorno: </strong>{{ret.data}}</ion-col>
         <ion-col><strong>Status: </strong>{{ret.status}}</ion-col>
       </ion-row>
+      <ion-row>
+          <ion-col><strong>Data Envio/Retorno: </strong>{{ret.data | date:'dd/MM/y'}}</ion-col>
+      </ion-row>          
       <ion-row>
         <ion-col><strong>Descrição: </strong>{{ret.descricao}}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><strong>Anexo: </strong>{{ret.anexo}}</ion-col>
+        <ion-col><strong>Anexo: </strong><a href="http://www.feagri.unicamp.br/portal/{{ret.anexo}}">{{ret.anexo | filename:3}}</a></ion-col>
       </ion-row>
        <ion-row>
         <ion-col><strong>Local: </strong>{{ret.local}}</ion-col>
