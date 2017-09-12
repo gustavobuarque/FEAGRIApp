@@ -9,7 +9,7 @@
   
   <ion-list>
     <ion-item-sliding *ngFor="let contato of contatos; let i = index;">
-      <ion-item>
+      <ion-item (click)="openInfo(i)">
         <ion-avatar item-left>
           <img src="http://www.feagri.unicamp.br/portal/images/fotosservidores/{{contato.fotopid}}/_thumb1/{{contato.fotopath}}">
           
